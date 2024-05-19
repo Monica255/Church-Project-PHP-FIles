@@ -28,13 +28,16 @@ if ($stmt->num_rows > 0) {
 }
 $stmt->close();
 
+// Menentukan peran berdasarkan email
+$role = (strpos($email, '@admin') !== false) ? 'admin' : 'jemaat';
+
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-$stmt = $conn->prepare("INSERT INTO users (email, password, name, role) VALUES (?, ?, ?, 'jemaat')");
-$stmt->bind_param("sss", $email, $hashed_password, $name);
+$stmt = $conn->prepare("INSERT INTO users (email, password, name, role) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $email, $hashed_password, $name, $role);
 
 if ($stmt->execute()) {
-    echo json_encode(array("status" => "success", "message" => "Pendaftaran berhasil", "user" => array("name" => $name, "email" => $email, "role" => "user")));
+    echo json_encode(array("status" => "success", "message" => "Pendaftaran berhasil", "user" => array("name" => $name, "email" => $email, "role" => $role)));
 } else {
     echo json_encode(array("status" => "error", "message" => "Terjadi kesalahan, silakan coba lagi"));
 }
