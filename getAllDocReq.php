@@ -7,9 +7,9 @@ $email = isset($_GET['email']) ? $_GET['email'] : '';
 
 // Prepare SQL query based on the value of 'email' parameter
 if ($email == 'all') {
-    $query = "SELECT * FROM prayer ORDER BY timestamp ASC";
+    $query = "SELECT * FROM doc_req";
 } else {
-    $query = "SELECT * FROM prayer WHERE user_email = ? ORDER BY timestamp ASC";
+    $query = "SELECT * FROM doc_req WHERE user_email = ?";
 }
 
 if ($email == 'all') {
