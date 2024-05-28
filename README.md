@@ -8,5 +8,7 @@
 6. Create a table named users with attributes email(VARCHAR), name(VARCHAR), password(VARCHAR), role(VARCHAR) (email is the primary key and auto incremented)
 7. Create a table named attendance with attributes	id(INT), timestamp(timestamp), id_event(VARCHAR), name_event(VARCHAR), email_user(CARCHAR) (id is the primary key and auto incremented)
 8. Create a table named kegiatan with attributes id_event(INT), name_event(VARCHAR), start_time(VARCHAR), end_time(VARCHAR), date(VARCHAR) (id_event is the primary key and auto incremented)
+9. Create a table named prayer with attributes id(INT), user_email(VARCHAR), timestamp(timestamp), prayer(VARCHAR) (id is the primary key and auto incremented)
+10. Create a table named doc_req with attributes id(INT), user_email(VARCHAR), doc_type(VARCHAR), max_date(VARCHAR) (id is the primary key and auto incremented)
 
 NOTE: If you signup with @admin email, the account created will have the role 'admin' else 'jemaat'
