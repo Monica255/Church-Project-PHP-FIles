@@ -8,6 +8,7 @@ $data = json_decode($input, true);
 
 $user_email = isset($data['user_email']) ? $data['user_email'] : '';
 $prayer = isset($data['prayer']) ? $data['prayer'] : '';
+$status = isset($data['status']) ? $data['status'] : 0;
 
 if (empty($user_email) || empty($prayer)) {
     echo json_encode(array("status" => "error", "message" => "User email dan prayer harus diisi"));
@@ -15,8 +16,8 @@ if (empty($user_email) || empty($prayer)) {
 }
 
 // Prepare SQL statement to prevent SQL injection
-$stmt = $conn->prepare("INSERT INTO prayer (user_email, prayer, timestamp) VALUES (?, ?, NOW())");
-$stmt->bind_param("ss", $user_email, $prayer);
+$stmt = $conn->prepare("INSERT INTO prayer (user_email, prayer, timestamp,status) VALUES (?, ?, NOW(),?)");
+$stmt->bind_param("sss", $user_email, $prayer, $status);
 
 if ($stmt->execute()) {
     echo json_encode(array("status" => "success", "message" => "Permintaan berhasil dikirim"));
