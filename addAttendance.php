@@ -63,7 +63,12 @@ $stmt->close();
 // Konversi string date, start_time, and end_time to timestamps
 $event_start_timestamp = strtotime("$date $start_time");
 $event_end_timestamp = strtotime("$date $end_time");
-$current_timestamp = time();
+$current_timestamp = time(); 
+// $berlin_timestamp = time(); 
+
+// $jakarta_offset = 5 * 3600; 
+
+// $current_timestamp = $berlin_timestamp + $jakarta_offset;
 
 // Cek apakah waktu saat ini ada dalam rentan waktu acara
 if ($current_timestamp >= $event_start_timestamp && $current_timestamp <= $event_end_timestamp) {
