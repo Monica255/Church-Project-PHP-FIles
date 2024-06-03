@@ -29,7 +29,7 @@ if ($stmt->num_rows > 0) {
         $user = array("name" => $name, "email" => $email, "role" => $role);
         echo json_encode(array("status" => "success", "message" => "Login berhasil", "user" => $user));
     } else {
-        echo json_encode(array("status" => "error", "message" => "Password salah ".$password." ".$hashed_password));
+        echo json_encode(array("status" => "error", "message" => "Password salah "));
     }
 } else {
     echo json_encode(array("status" => "error", "message" => "Email tidak ditemukan"));
